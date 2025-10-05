@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard - Fitness{% endblock %}
+{% block content %}
+<h2>Today</h2>
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="card"><div class="card-body">
+      <h5 class="card-title">Calories</h5>
+      <p>Goal: <strong>{{ calorie_goal }}</strong></p>
+      <p>Consumed: <strong class="text-danger">{{ calories_consumed }}</strong></p>
+      <p>Burned: <strong class="text-success">{{ calories_burned }}</strong></p>
+      <p>Net: <strong>{{ net_calories }}</strong></p>
+    </div></div>
+  </div>
+  <div class="col-md-4">
+    <div class="card"><div class="card-body">
+      <h5 class="card-title">Workouts</h5>
+      <ul class="list-group list-group-flush">
+        {% for w in workouts_today %}
+        <li class="list-group-item">{{ w.title }} ({{ w.duration_min }} min)</li>
+        {% else %}
+        <li class="list-group-item">No workouts yet.</li>
+        {% endfor %}
+      </ul>
+      <a class="btn btn-sm btn-primary mt-3" href="/workouts/add">Add Workout</a>
+    </div></div>
+  </div>
+  <div class="col-md-4">
+    <div class="card"><div class="card-body">
+      <h5 class="card-title">Meals</h5>
+      <ul class="list-group list-group-flush">
+        {% for m in meals_today %}
+        <li class="list-group-item">{{ m.name }} ({{ m.calories }} cal)</li>
+        {% else %}
+        <li class="list-group-item">No meals yet.</li>
+        {% endfor %}
+      </ul>
+      <a class="btn btn-sm btn-primary mt-3" href="/meals/add">Add Meal</a>
+    </div></div>
+  </div>
+</div>
+{% endblock %}
