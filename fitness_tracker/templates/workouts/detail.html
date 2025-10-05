@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Workout Details - Fitness{% endblock %}
+{% block content %}
+<h2>{{ workout.title }}</h2>
+<p>
+  <strong>Type:</strong> {{ workout.type }}<br />
+  <strong>Duration:</strong> {{ workout.duration_min }} min<br />
+  <strong>Calories burned:</strong> {{ workout.calories_burned }}<br />
+  <strong>Date:</strong> {{ workout.date }}
+</p>
+{% if workout.notes %}
+<div class="mb-3"><strong>Notes:</strong><br/>{{ workout.notes }}</div>
+{% endif %}
+<a href="/workouts/{{ workout.id }}/edit" class="btn btn-secondary">Edit</a>
+<a href="/workouts" class="btn btn-link">Back</a>
+{% endblock %}

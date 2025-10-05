@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Meal Details - Fitness{% endblock %}
+{% block content %}
+<h2>{{ meal.name }}</h2>
+<p>
+  <strong>Calories:</strong> {{ meal.calories }}<br />
+  <strong>Macros (P/C/F):</strong> {{ meal.protein_g }}/{{ meal.carbs_g }}/{{ meal.fat_g }}<br />
+  <strong>Date:</strong> {{ meal.date }}
+</p>
+{% if meal.notes %}
+<div class="mb-3"><strong>Notes:</strong><br/>{{ meal.notes }}</div>
+{% endif %}
+<a href="/meals/{{ meal.id }}/edit" class="btn btn-secondary">Edit</a>
+<a href="/meals" class="btn btn-link">Back</a>
+{% endblock %}
